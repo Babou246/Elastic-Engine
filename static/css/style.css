@@ -1,0 +1,88 @@
+*,body{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contain{
+    display: flex;
+    justify-content: space-between;
+
+}
+.barRecherche{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 12px;
+    background-color: rgb(3, 238, 255);
+    margin-bottom: 22px;
+}
+form{
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+#input{
+
+    background: url("../img/icons8-chercher-48.png") top left no-repeat;
+    background-color: aliceblue;
+    width: 4%;
+    height:55px;
+    border: none;
+}
+.barRecherche form .input{   
+    height:55px;
+    padding-left:25px;
+    margin-right: 12px;
+    width: 75%;
+    border: none;
+
+}
+.barRecherche button{
+    padding:10px;
+    background-color: white;
+}
+.barRecherche button:hover{
+    color: rgb(0, 0, 0);
+    background-color: aqua;
+}
+
+.jumia,.auchan,.alibaba
+{
+    /* padding: 25px 12px; */
+    margin: 10px 12px;
+    /* border: 2px solid red; */
+    width: 600px;
+    height: 50vh;
+    overflow: hidden;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.data{
+    border: 2px solid;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin: 0px 12px;
+    padding: 0px 23px;
+    justify-content: space-between;
+    width: 600px;
+    margin: 10px 0;
+    
+}
+.data img{
+    width: 200px;
+    height: 25vh;
+}
+.data:hover{
+    background-color: aqua;
+    opacity: .8;
+    transform: scale(3deg) translateX(120deg);
+}

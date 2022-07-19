@@ -1,0 +1,22 @@
+{
+  "name": "webscripingjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Babou246/WebScripingJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Babou246/WebScripingJS/issues"
+  },
+  "homepage": "https://github.com/Babou246/WebScripingJS#readme",
+  "description": "",
+  "dependencies": {
+    "neat-csv": "^7.0.0"
+  }
+}

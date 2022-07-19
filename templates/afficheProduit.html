@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/alert.css') }}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+
+    <div class="carte">
+        <span id="span">X</span>
+        <div class="contenu">
+            <!-- <h1>hello</h1> -->
+            <div class="right">
+                <p>{{ count }} ont été Trouvé</p><br>
+                <p>Correspondants à {{ search }}</p>
+            </div>
+            
+        </div>
+    </div>
+
+   
+    <div class="barRecherche">
+        <form method="POST">
+            <input id="input" type="button" value="">
+            <input class="input" type="text" name="recherche" id="" placeholder="Recherche">
+            <button type="submit" formaction="/">Recherche</button>
+        </form>
+    </div>
+
+     <!-- FAIRE UN ALERT DE SUCCES -->
+    <!-- <button>Show Alert</button> -->
+    <div class="alert-box hide hidden">
+        Message Text Here
+        <span class="close-alert">&times;</span>
+    </div>
+   
+    
+
+    <!-- FIN DE L'ALERT -->
+
+
+    <div class="title">
+        <h2 id="jumia">JUMIA</h2>
+        <h2 id="auchan">AUCHAN</h2>
+        <h2 id="alibaba">ALIBABA</h2>
+    </div>
+    
+    <div class="con">
+        <div id="containt">
+            {% if name %}
+            <!-- JUMIA -->
+                <div class="grid">
+                    
+                    <div class="grid-item">
+                        {% if elements %}
+                            {% for element in elements%}
+    
+                                <div class="card">
+                                    
+                                    <img
+                                    class="card-img"
+                                    src="{{ element.image }}"
+                                    alt="Grand Canyon"
+                                    />
+                                    <div class="card-content">
+                                        <p class="card-text">
+                                            {{ element.description }} 
+                                        </p>
+                                        <button class="card-btn">{{element.prix_fcfa}}</button>
+                                    </div>
+                            
+    
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                                <h1>Aucun produit ne correspond à ce nom {{ search }}</h1>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- AUCHAN -->
+    
+                <div class="grid">
+                    
+                    <div class="scrollbar"></div>
+                    <div class="clickScrollbar"></div>
+                    <div class="grid-item">
+                        {% if auchans %}
+                            {% for element in auchans %}
+                
+                                <div class="card">
+                                    
+                                    <img
+                                    class="card-img"
+                                    src="{{ element.image }}"
+                                    alt="Grand Canyon"
+                                    />
+                                    <div class="card-content">
+                                        <p class="card-text">
+                                            {{ element.description }} 
+                                        </p>
+                                        <button class="card-btn">{{element.prix_fcfa}} FCFA</button>
+                                    </div>
+                            
+                
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                                <h1>Aucun produit ne correspond à ce nom {{ search }}</h1>
+                        {% endif %}
+                    </div>
+            
+                    
+    
+                </div>
+                <!-- ALIBABA -->
+    
+                <div class="grid">
+                    
+            
+                    <div class="grid-item">
+                        {% if alibaba %}
+                            {% for element in alibaba%}
+                
+                                <div class="card">
+                                    
+                                    <img
+                                    class="card-img"
+                                    src="{{ url_for('static',filename='img/icons8-chercher-24.png') }}"
+                                    alt="Grand Canyon"
+                                    />
+                                    <div class="card-content">
+                                    <p class="card-text">
+                                        {{ element.description }} 
+                                    </p>
+                                    <button class="card-btn">{{element.prix_fcfa}} FCFA</button>
+                                    </div>
+                            
+                
+                                </div>
+                            {% endfor %}
+                            {% else %}
+                                    <h1>Aucun produit ne correspond à ce nom {{ search }}</h1>
+                            {% endif %}
+                        </div>
+    
+                </div>
+    
+                
+            {% else %}
+                <!-- JUMIA -->
+                <div class="grid">
+                    
+                    <div class="grid-item">
+                    {% for element in elements%}
+    
+                        <div class="card">
+                            
+                            <img
+                            class="card-img"
+                            src="{{ element.image }}"
+                            alt="Grand Canyon"
+                            />
+                            <div class="card-content">
+                                <p class="card-text">
+                                    {{ element.description }} 
+                                </p>
+                                <button class="card-btn">{{element.prix_fcfa}}</button>
+                            </div>
+                    
+    
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+    
+    
+                <!-- AUCHAN -->
+    
+                <div class="grid">
+                    <div class="grid-item">
+                        {% for element in auchans %}
+            
+                            <div class="card">
+                                
+                                <img
+                                class="card-img"
+                                src="{{ element.image }}"
+                                alt="Grand Canyon"
+                                />
+                                <div class="card-content">
+                                    <p class="card-text">
+                                        {{ element.description }} 
+                                    </p>
+                                    <button class="card-btn">{{element.prix_fcfa}} FCFA</button>
+                                </div>
+                        
+            
+                            </div>
+                        {% endfor %}
+                    </div>
+            
+                    
+    
+                </div>
+                <!-- ALIBABA -->
+    
+                <div class="grid">
+                    
+            
+                    <div class="grid-item">
+                        {% for element in alibaba%}
+            
+                            <div class="card">
+                                
+                                <img
+                                class="card-img"
+                                src="{{ url_for('static',filename='img/icons8-chercher-24.png') }}"
+                                alt="Grand Canyon"
+                                />
+                                <div class="card-content">
+                                <p class="card-text">
+                                    {{ element.description }} 
+                                </p>
+                                <button class="card-btn">{{element.prix_fcfa}} FCFA</button>
+                                </div>
+                        
+            
+                            </div>
+                        {% endfor %}
+                        </div>
+    
+                </div>
+            {% endif %}
+        </div>
+        <div class="en-bas">
+            <div class="left">
+                <p class="p">{% if Countl > 2 %} <strong>{{ Countl }} </strong> produits JUMIA trouvés {% else %} produit JUMIA trouvé {% endif %}</p>
+                <p class="p">{% if CountAuchan > 2 %} <strong>{{ CountAuchan }} </strong> produits AUCHAN trouvés {% else %} produit AUCHAN trouvé {% endif %}</p>
+                <p class="p">{% if CountAlibaba > 2 %} <strong>{{ CountAlibaba }} </strong> produits ALIBABA trouvés {% else %} produit ALIBABA trouvé {% endif %}</p>
+                <p class="left_in">
+                <canvas id="myChart" width="400" height="200"></canvas>
+
+                </p>
+                
+            </div>
+            <!-- <div class="right">
+                    
+            </div> -->
+            
+        </div>
+        
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+</body>
+<script>
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    // async function getUsers(){
+            // let rep = await fetch('http://127.0.0.1:5000/api/auchan');
+            // let reponse = await rep.json();
+
+            // console.log(reponse)
+
+            // for(let i of reponse){
+        // console.log(i)
+        // console.log(i['prix_fcfa'])
+        
+        // console.log(i.prix_fcfa[0])
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ prix | safe}},
+                datasets: [{
+                    label: ['Description selon les prix'],
+                    data: [{{ prix | safe }}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+    });
+        // }
+    // }
+
+    
+    getUsers()
+
+   const myBtn=document.querySelector("button");
+   const alertBox=document.querySelector(".alert-box");
+   const closeBtn=document.querySelector(".close-alert")     
+   let timer;
+   myBtn.addEventListener("click",function () {
+        showAlertBox();
+   })
+   closeBtn.addEventListener("click",function () {
+        hideAlertBox();
+        clearTimeout(timer);
+   })
+
+   function showAlertBox(){
+      alertBox.classList.remove("hide");
+      alertBox.classList.add("show");
+      // hide animation onload 
+      if(alertBox.classList.contains("hidden")){
+          alertBox.classList.remove("hidden");
+      }
+      timer=setTimeout(function(){
+          hideAlertBox();
+      },6000)
+   }
+    
+   function hideAlertBox(){
+     alertBox.classList.remove("show");
+      alertBox.classList.add("hide");
+   }
+
+   const carte = document.querySelector('div.carte')
+  
+    const h2 = document.getElementById('jumia')
+    h2.addEventListener('click',()=>{carte.style.display='flex'})
+    // console.log(h2)
+    const alibaba = document.getElementById('alibaba').addEventListener('click',()=>{carte.style.display='flex'})
+    const auchan = document.getElementById('auchan').addEventListener('click',()=>{carte.style.display='flex'})
+    const span = document.getElementById('span').addEventListener('click',()=>{carte.style.display='none'})
+    
+    
+</script>
+
+</html>

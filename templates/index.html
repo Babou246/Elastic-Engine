@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recherche</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+        <script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
+        <script src="{{url_for('static',filename='pagination.js')}}"></script>
+    </head>
+
+    <body style="background-color: rgb(201, 200, 200); display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div class="">
+            <h2 class="" style="background-color: #fff; color:black; padding: 19px 120px;font-size: 30px;"><a href="/">COUCHE_SEARCH</a></h2>
+        </div>
+        <!-- DIV QUI CONTIENT LE FORMULAIRE -->
+        <div class="recherche" style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        ">
+        <!-- NOTRE FORMULAIRE DE RECHERCHE -->
+            <form action ="/search" method = "POST" style="margin-top: 40px; display: flex;">
+                <input type="text" placeholder="Tapez la recherche ici ..." name="search"
+                    class="" style="
+                        padding: 20px 120px;
+                        border: none;
+
+                    " autocomplete="off"></input>
+                <button class="" style="padding: 20px 30px; color:black; background-color: rgb(238, 238, 238);">
+                Recherche
+                </button>
+            </form>
+        </div>
+        <!-- FIN DIV  -->
+        {% block content %}
+        <!-- S'IL YA ERRREUR ON GENERE LES EXECEPTIONS -->
+        <div>
+            <h2 class="text-gray-800 font-bold pl-2/5 mt-10">{{ es_error }}</h2>
+        </div>
+        <!-- FIN ERROR -->
+
+        <!-- AFFICHAGE DES DONNÉES DANS NOTRE TEMPLATES -->
+        <div class="justify-items-center container">
+            
+        {% if query %}
+        <!-- Boutik jumia -->
+            {% for d in listes_jumia %}
+            <div
+                class="transition duration-500 
+                ease-in-out flex py-3 px-2 
+                hover:bg-blue-400 transform 
+                hover:-translate-y-1 
+                hover:scale-110 hover:text-white 
+                hover:shadow-none hover:rounded border 
+                border-white-300 shadow-lg"
+                id="demo"
+                style="
+                        margin: 21px 165px;
+                "
+            >
+                <div class="w-3/5 mr-0" style="display: flex;">
+                    <div class="right">
+                        <h2 class="text-gray-800 font-bold"><img src="{{ d.image }}" alt="" srcset=""></h2>
+                        <p><a href="https://www.jumia.sn/{{d.description}}-9330353.html">{{ d.description}}</a></p>
+                    </div>
+                    <div class="left" style="font-size: 60px;">
+                        <p>{{ d.price }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Boutik auchan -->
+            {% for d in listes_auchan %}
+            <div
+                class="transition duration-500 
+                ease-in-out flex py-3 px-2 
+                hover:bg-blue-400 transform 
+                hover:-translate-y-1 
+                hover:scale-110 hover:text-white 
+                hover:shadow-none hover:rounded border 
+                border-white-300 shadow-lg"
+                id="demo"
+                style="
+                        margin: 21px 165px;
+                "
+            >
+                <div class="w-3/5 mr-0" style="display: flex;">
+                    <div class="right">
+                        <h2 class="text-gray-800 font-bold"><img src="{{ d.image }}" alt="" srcset=""></h2>
+                        <p><a href="https://www.jumia.sn/{{d.description}}-9330353.html">{{ d.description}}</a></p>
+                    </div>
+                    <div class="left" style="font-size: 60px;">
+                        <p>{{ d.price }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- FIN -->
+            {% elif query == '' %}
+                <h3 style="color:red">Oops vous n'avez rien taper veuiller réessayer </h3>
+            {% else %}
+                <h3 style="color: red;"><strong>{{ query }}</strong> ne correspond à aucun des elements de recherche merci de reessayer !!!</h3>
+                <!-- <h3>Correction : Voulez-vous dire {{ d }}</h3> -->
+            {% endif %}
+        </div>
+        <!-- FIN AFFICHAGE DES ELEMENTS À RECHERCHER -->
+        {% endblock %}
+    </body>
+
+</html>
